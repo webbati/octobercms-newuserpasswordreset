@@ -1,0 +1,6 @@
+plugin:
+    name: 'studiobosco.newuserpasswordreset::lang.plugin.name'
+    description: 'studiobosco.newuserpasswordreset::lang.plugin.description'
+    author: 'Ondrej Brinkel <ondrej@studiobosco.de>'
+    icon: oc-icon-user
+    homepage: ''
