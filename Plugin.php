@@ -24,6 +24,12 @@ class Plugin extends PluginBase
                 return;
             }
 
+            $fields = $form->getFields();
+
+            $fields['send_invite']->value = false;
+            $fields['send_invite']->defaults = false;
+            $fields['send_invite']->hidden = true;
+
             $form->addTabFields([
                 'generate_password' => [
                     'label' => null,
@@ -43,10 +49,17 @@ class Plugin extends PluginBase
                     'link' => $link,
                 ];
 
-                Mail::send('backend::mail.restore', $data, function ($message) use ($user) {
-                    $message->to($user->email, $user->full_name)->subject(trans('backend::lang.account.password_reset'));
+                Mail::send('studiobosco.newuserpasswordreset::mail.invite_with_restore', $data, function ($message) use ($user) {
+                    $message->to($user->email, $user->full_name)->subject(trans('studiobosco.newuserpasswordreset::lang.subject_invite_with_reset'));
                 });
             });
         });
+    }
+
+    public function registerMailTemplates()
+    {
+        return [
+            'studiobosco.newuserpasswordreset::mail.invite_with_restore',
+        ];
     }
 }

@@ -1,0 +1,18 @@
+subject = "Welcome to {{ appName | raw }}"
+==
+
+Hi {{ name }}
+
+A user account has been created for you on **{{ appName }}**.
+
+{% partial 'panel' body %}
+- Login: `{{ login ?: 'sample' }}`
+{% endpartial %}
+
+You can use the following link to set your password:
+
+{% partial 'button' url=link type='positive' body %}
+    Set password
+{% endpartial %}
+
+After setting your password you can login with your username `{{ login ?: 'sample' }}`.
