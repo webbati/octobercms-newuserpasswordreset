@@ -46,6 +46,7 @@ class Plugin extends PluginBase
 
                 $data = [
                     'name' => $user->full_name,
+                    'login' => $user->login,
                     'link' => $link,
                 ];
 
